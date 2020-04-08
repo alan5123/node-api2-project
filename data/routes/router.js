@@ -23,7 +23,7 @@ router
   .get("/:id", (req, res) => {
     db.findById(req.params.id)
       .then((post) => {
-        if (post) {
+        if (post.length) {
           res.status(200).json(post);
         } else {
           res.status(404).json({
@@ -44,7 +44,7 @@ router
     .get("/:id/comments", (req, res) => {
         db.findPostComments(req.params.id)
           .then((comment) => {
-            if (comment) {
+            if (comment.length) {
               res.status(200).json(comment);
             } else {
               res.status(404).json({
